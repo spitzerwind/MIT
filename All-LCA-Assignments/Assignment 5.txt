@@ -1,0 +1,194 @@
+import pandas as pd
+df = pd.read_csv("data.csv")
+print ("Shape")
+df.shape
+print ("Columns")
+df.columns
+print ("Data Types")
+df.dtypes
+print ("Statistical Summary")
+df.describe()
+
+#1
+import matplotlib.pyplot as plt
+df['Pclass'].value_counts().plot(kind='bar')
+plt.show()
+
+#2
+import matplotlib.pyplot as plt
+df['Sex'].value_counts().plot(kind='pie', autopct='%1.1f%%')
+plt.show()
+
+#3
+import matplotlib.pyplot as plt
+df['Survived'].value_counts().plot(kind='bar')
+plt.show()
+
+#4
+import matplotlib.pyplot as plt
+df['Age'].plot(kind='hist')
+plt.show()
+
+#5
+import matplotlib.pyplot as plt
+df['Fare'].plot(kind='hist')
+plt.show()
+
+#6
+import matplotlib.pyplot as plt
+plt.scatter(df['Age'], df['Fare'])
+plt.show()
+
+#7
+import matplotlib.pyplot as plt
+df.groupby('Pclass')['Fare'].mean().plot(kind='line', marker='o')
+plt.show()
+
+#8
+import matplotlib.pyplot as plt
+df.groupby('Pclass')['Survived'].mean().plot(kind='bar')
+plt.show()
+
+#9
+import matplotlib.pyplot as plt
+df.groupby('Sex')['Survived'].mean().plot(kind='bar')
+plt.show()
+
+#10
+import matplotlib.pyplot as plt
+df.groupby('Age')['Fare'].mean().plot(kind='line')
+plt.show()
+
+#11
+import matplotlib.pyplot as plt
+df.boxplot(column='Age')
+plt.title('Age Boxplot')
+plt.xlabel('Dataset')
+plt.ylabel('Age')
+plt.grid(True)
+plt.show()
+
+#12
+import matplotlib.pyplot as plt
+df.boxplot(column='Fare')
+plt.title('Fare Boxplot')
+plt.xlabel('Dataset')
+plt.ylabel('Fare')
+plt.grid(True)
+plt.show()
+
+#13
+import matplotlib.pyplot as plt
+df.groupby('Sex')['Age'].mean().plot(kind='bar', color='skyblue')
+plt.title('Average Age by Sex')
+plt.xlabel('Sex')
+plt.ylabel('Mean Age')
+plt.xticks(rotation=0)
+plt.show()
+
+#14
+import matplotlib.pyplot as plt
+df.groupby('Sex')['Fare'].mean().plot(kind='bar', color='lightgreen')
+plt.title('Average Fare by Sex')
+plt.xlabel('Sex')
+plt.ylabel('Mean Fare')
+plt.xticks(rotation=0)
+plt.show()
+
+#15
+import matplotlib.pyplot as plt
+plt.scatter(df['Pclass'], df['Fare'], alpha=0.5, color='purple')
+plt.title('Fare vs Pclass')
+plt.xlabel('Passenger Class')
+plt.ylabel('Fare')
+plt.grid(True)
+plt.show()
+
+#16
+import matplotlib.pyplot as plt
+plt.scatter(df['Survived'], df['Age'], alpha=0.5, color='orange')
+plt.title('Age vs Survival')
+plt.xlabel('Survived (0 = No, 1 = Yes)')
+plt.ylabel('Age')
+plt.grid(True)
+plt.show()
+
+#17
+import matplotlib.pyplot as plt
+df.groupby(['Pclass', 'Sex'])['Survived'].mean().unstack().plot(kind='bar')
+plt.title('Survival Rate by Pclass and Sex')
+plt.xlabel('Passenger Class')
+plt.ylabel('Survival Rate')
+plt.legend(title='Sex')
+plt.xticks(rotation=0)
+plt.show()
+
+#18
+import matplotlib.pyplot as plt
+df['Pclass'].value_counts().plot(kind='pie', autopct='%1.1f%%')
+plt.title('Pclass Share')
+plt.ylabel('')
+plt.show()
+
+#19
+import matplotlib.pyplot as plt
+df['Age'].value_counts().sort_index().plot(kind='line', color='teal')
+plt.title('Age Frequency Line')
+plt.xlabel('Age')
+plt.ylabel('Count')
+plt.grid(True)
+plt.show()
+
+#20
+import matplotlib.pyplot as plt
+df['Fare'].value_counts().sort_index().plot(kind='line', color='brown')
+plt.title('Fare Frequency Line')
+plt.xlabel('Fare')
+plt.ylabel('Count')
+plt.grid(True)
+plt.show()
+
+#21
+import matplotlib.pyplot as plt
+df.groupby('Pclass')['Age'].mean().plot(kind='bar', color='coral')
+plt.title('Average Age by Pclass')
+plt.xlabel('Passenger Class')
+plt.ylabel('Mean Age')
+plt.xticks(rotation=0)
+plt.show()
+
+#22
+import matplotlib.pyplot as plt
+df['Age'].value_counts().sort_index().plot(kind='area', alpha=0.4, color='magenta')
+plt.title('Age Area Distribution')
+plt.xlabel('Age')
+plt.ylabel('Density / Count')
+plt.grid(True)
+plt.show()
+
+#23
+import matplotlib.pyplot as plt
+df['Age'].plot(kind='hist', bins=20, color='gray', edgecolor='black')
+plt.title('Age Histogram')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+#24
+import matplotlib.pyplot as plt
+df['Fare'].plot(kind='hist', bins=20, color='navy', edgecolor='black')
+plt.title('Fare Histogram')
+plt.xlabel('Fare')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+#25
+import matplotlib.pyplot as plt
+df.groupby('Survived')['Fare'].mean().plot(kind='bar', color='gold')
+plt.title('Mean Fare by Survival Status')
+plt.xlabel('Survived (0 = No, 1 = Yes)')
+plt.ylabel('Mean Fare')
+plt.xticks(rotation=0)
+plt.show()
